@@ -6,4 +6,5 @@ import ElementosSistemas.Usuario;
 public interface EmprestimoBehavior {
     public void Alugar(Usuario Usuario, Livro Livro);
     public void Devolver(Usuario Usuario, Livro Livro);
+    public void Reservar(Usuario Usuario, Livro Livro);
 }

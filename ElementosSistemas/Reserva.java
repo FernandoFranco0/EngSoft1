@@ -25,4 +25,8 @@ public class Reserva {
     public String getLivroNome(){
         return Livro.getTitulo();
     }
+
+    public Livro getLivro() {
+        return Livro;
+    }
 }

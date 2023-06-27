@@ -12,7 +12,11 @@ public class Livro implements Subject{
     private String Editora;
     private int Edicao;
     private List<String> Autores;
-    private List<Exemplar> ListaExemplar;
+
+    // isso aqui é basicamente um hack para o alugar, mas não precisa para o resto pois esta sendo feito com o state
+    private List<Exemplar> ListaExemplarIndisponiveis;    
+    private List<Exemplar> ListaExemplarDisponiveis;
+
     private List<Reserva> ListaReservas;
     private ArrayList<ObserverBehavior> Observers;
 
@@ -26,7 +30,11 @@ public class Livro implements Subject{
             }
         }
 
-        for(Exemplar E : ListaExemplar){
+        for(Exemplar E : ListaExemplarIndisponiveis){
+            E.MostrarInfo();
+        }
+
+        for(Exemplar E : ListaExemplarDisponiveis){
             E.MostrarInfo();
         }
     }
@@ -68,5 +76,26 @@ public class Livro implements Subject{
 
         if(ListaReservas.size() >= 2)
             notifyObservers();
+    }
+
+    public List<Exemplar> getListaExemplarIndisponiveis() {
+        return ListaExemplarIndisponiveis;
+    }
+    public void setListaExemplarIndisponiveis(List<Exemplar> listaExemplarIndisponiveis) {
+        ListaExemplarIndisponiveis = listaExemplarIndisponiveis;
+    }
+
+    public List<Exemplar> getListaExemplarDisponiveis() {
+        return ListaExemplarDisponiveis;
+    }
+    public void setListaExemplarDisponiveis(List<Exemplar> listaExemplarDisponiveis) {
+        ListaExemplarDisponiveis = listaExemplarDisponiveis;
+    }
+
+    public List<Reserva> getListaReservas() {
+        return ListaReservas;
+    }
+    public void setListaReservas(List<Reserva> listaReservas) {
+        ListaReservas = listaReservas;
     }
 }
