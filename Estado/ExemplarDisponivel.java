@@ -4,12 +4,12 @@ import ElementosSistemas.Emprestimo;
 
 public class ExemplarDisponivel implements IEstadoExemplar{
 
-    public void MostrarInfo(Emprestimo E) {
-        System.out.print(" -- Esta disponivel");
+    public String MostrarInfo(Emprestimo E) {
+        return " -- Esta disponivel";
     }
     
-    public void Devolver(Emprestimo E) {
-        System.out.println("Erro. Exemplar já estava disponivel");
+    public String Devolver(Emprestimo E) {
+        return "Erro. Exemplar já estava disponivel";
     }
     
 }

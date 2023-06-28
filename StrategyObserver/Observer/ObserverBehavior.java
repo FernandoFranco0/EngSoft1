@@ -11,6 +11,6 @@ public abstract class ObserverBehavior {
 	}
 
     abstract public void Update(Livro l);    
-    abstract public void MostrarInfo();
+    abstract public String MostrarInfo();
 
 }

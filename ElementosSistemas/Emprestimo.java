@@ -23,8 +23,8 @@ public class Emprestimo {
 
     }
 
-    public void MostrarInfo(){
-        Estado.MostrarInfo(this);
+    public String MostrarInfo(){
+        return Estado.MostrarInfo(this);
     }
     
     public void Finalizar(){

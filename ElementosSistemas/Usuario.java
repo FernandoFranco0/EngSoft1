@@ -55,48 +55,45 @@ public class Usuario {
 
     // mudar para a classe de mensagem
 
-    public void ComandoUsu(){
-        System.out.println("Emprestimos finalizados: ");
+    public String ComandoUsu(){
+        String Msg = "";
+        Msg += "Emprestimos finalizados:\n ";
         for(Emprestimo E : EmprestimosPassados){
-            System.out.println("Livro: " + E.getExemplarNome() +
-                               " pego emprestado em " + E.getDataEmprestimo() + " ate" + E.getDataDevolucao());
+            Msg +="Livro: " + E.getExemplarNome() + " pego emprestado em " + E.getDataEmprestimo() + " ate " + E.getDataDevolucao() + "\n";
         }
-        System.out.println();
 
-        System.out.println("Emprestimos ativos: ");
+        Msg += "\n";
+
+        Msg +="Emprestimos ativos: \n";
         for(Emprestimo E : EmprestimosAtuais){
-            System.out.println("Livro: " + E.getExemplarNome() +
-                               " pego emprestado em " + E.getDataEmprestimo() + " ate" + E.getDataDevolucao());
+            Msg += "Livro: " + E.getExemplarNome() + " pego emprestado em " + E.getDataEmprestimo() + " ate" + E.getDataDevolucao() + "\n";
         }
-        System.out.println();
+        
+        Msg += "\n";
 
-        System.out.println("Reservas: ");
+        Msg += "Reservas: \n";
+
         for(Reserva R : ListReserva){
-            System.out.println("Reservou o Livro " + R.getLivroNome() + " em " + R.getData());
+            Msg += "Reservou o Livro " + R.getLivroNome() + " em " + R.getData() + "\n";
         }
+
+        return Msg;
     }
 
-    public void ComandoNtf(){
-        ObserverManager.MostrarInfo();
+    public String ComandoNtf(){
+        return ObserverManager.MostrarInfo();
     }
 
-    public void Alugar(Livro Livro){
-        EmprestimoManager.Alugar(this, Livro);
+    public String Alugar(Livro Livro){
+        return EmprestimoManager.Alugar(this, Livro);
     }
 
-    public void Devolver(Livro Livro){
-        EmprestimoManager.Devolver(this, Livro);
+    public String Devolver(Livro Livro){
+        return EmprestimoManager.Devolver(this, Livro);
     }
 
-    public void Reservar(Livro L){
-        if(ListReserva.size() < 3){
-            Reserva R = new Reserva(L, this, null); // variavel data atual ?
-            ListReserva.add(R); 
-            L.Reservar(R);
-        }
-        else{
-            // mensagem erro
-        }
+    public String Reservar(Livro L){
+        return EmprestimoManager.Reservar(this, L);
     }
 
     public void RetirarEmpre(Emprestimo E){

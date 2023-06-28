@@ -14,8 +14,8 @@ public class ObserverProfessor extends ObserverBehavior {
     }
 
     @Override
-    public void MostrarInfo() {
-        System.out.println("Notificado " + VezesNotificado + " vezes");
+    public String MostrarInfo() {
+        return "Notificado " + VezesNotificado + " vezes" ;
     }
     
 }

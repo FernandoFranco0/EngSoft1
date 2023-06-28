@@ -4,13 +4,13 @@ import ElementosSistemas.Emprestimo;
 
 public class ExemplarEmprestado implements IEstadoExemplar{
 
-    public void MostrarInfo(Emprestimo E) {
-        System.out.print(" -- Exemplar emprestado para " + E.getUsuarioNome() + 
-                         " em " + E.getDataEmprestimo() + " ate " + E.getDataDevolucao());
+    public String MostrarInfo(Emprestimo E) {
+        return " -- Exemplar emprestado para " + E.getUsuarioNome() + " em " + E.getDataEmprestimo() + " ate " + E.getDataDevolucao();
     }
     
-    public void Devolver(Emprestimo E) {
+    public String Devolver(Emprestimo E) {
         E.setEstado(new ExemplarDisponivel());
+        return "Emprestimo agora está devolvido";
     }
     
 }

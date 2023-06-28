@@ -19,23 +19,32 @@ public class Livro implements Subject{
     private List<Reserva> ListaReservas;
     private ArrayList<ObserverBehavior> Observers;
 
-    public void ComandoLiv(){
-        System.out.println("Titulo: " + Titulo);
-        System.out.println("Quantidade de reservars: " + ListaReservas.size());
+    public String ComandoLiv(){
+        String Msg = "";
+        Msg += "Titulo: " + Titulo + "\n";
+        Msg += "Quantidade de reservars: " + ListaReservas.size() + "\n";
         if(ListaReservas.size() > 0){
-            System.out.println("Reservador por: ");
+            Msg +="Reservador por: ";
             for(Reserva R : ListaReservas){
-                System.out.println(R.getUsuario() + " ");
+                Msg += R.getUsuario() + ", ";
             }
         }
 
+        Msg += "\n";
+
         for(Exemplar E : ListaExemplarIndisponiveis){
-            E.MostrarInfo();
+            Msg += E.MostrarInfo();
         }
 
+        Msg += "\n";
+
         for(Exemplar E : ListaExemplarDisponiveis){
-            E.MostrarInfo();
+            Msg += E.MostrarInfo();
         }
+
+        Msg += "\n";
+
+        return Msg;
     }
 
     public void ExemplarDisponivel(Exemplar E){
@@ -89,8 +98,9 @@ public class Livro implements Subject{
 		}
     }
 
-    public void registerObserver(ObserverBehavior o) {
+    public String registerObserver(ObserverBehavior o) {
         Observers.add(o);
+        return "Professor adicionado com sucesso";
     }
 
     public void removeObserver(ObserverBehavior o) {

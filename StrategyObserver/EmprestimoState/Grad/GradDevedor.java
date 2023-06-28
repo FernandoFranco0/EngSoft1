@@ -12,11 +12,11 @@ import StrategyObserver.EmprestimoBehavior;
 
 public class GradDevedor implements EmprestimoBehavior {
 
-    public void Alugar(Usuario Usuario, Livro Livro) {
-        System.out.println("Usuario devedor, emprestimo não realizado");;
+    public String Alugar(Usuario Usuario, Livro Livro) {
+        return "Usuario devedor, emprestimo não realizado";
     }
 
-    public void Devolver(Usuario Usuario, Livro Livro) {
+    public String Devolver(Usuario Usuario, Livro Livro) {
 
         for(Emprestimo E : Usuario.getEmprestimosAtuais()){
 
@@ -29,21 +29,17 @@ public class GradDevedor implements EmprestimoBehavior {
                 if(!Usuario.IsDevedor())
                     Usuario.setEmprestimoManager(new GradOk());
 
-                return;
+                return "Devolvido com sucesso";
             }
         }
-
-        System.out.println("Erro, ususario não tem esse livro");
-        return;
-
-
+        return "Erro, ususario não tem esse livro";
     }
 
-    public void Reservar(Usuario Usuario, Livro Livro) {
+    public String Reservar(Usuario Usuario, Livro Livro) {
 
         if(Usuario.getListReserva().size() >= 3){
-            System.out.println("Limite de reservas");    
-            return;
+                
+            return "Limite de reservas";
         }
 
         List<Reserva> a = Usuario.getListReserva();
@@ -51,7 +47,7 @@ public class GradDevedor implements EmprestimoBehavior {
 
         Usuario.setListReserva(a);
 
-        System.out.println("Reserva realizada");    
+        return "Reserva realizada";    
     }
 
     public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {

@@ -12,17 +12,16 @@ import StrategyObserver.EmprestimoBehavior;
 
 
 public class ProfessorOk implements EmprestimoBehavior {
-    public void Alugar(Usuario Usuario, Livro Livro) {
 
-        if(Usuario.IsDevedor()){
-            System.out.println("Usuario Devedor");
+    public String Alugar(Usuario Usuario, Livro Livro) {
+
+        if(Usuario.IsDevedor()){    
             Usuario.setEmprestimoManager(new ProfessorDevedor());
-            return;
+            return "Usuario Devedor";
         }
 
         if (!Livro.TemExemplares()){
-            System.out.println("Sem Exemplares");
-            return;
+            return "Sem Exemplares";
         }
 
         Exemplar ParaAlugar = Livro.GetExemplarDisponivel();
@@ -30,9 +29,11 @@ public class ProfessorOk implements EmprestimoBehavior {
         Livro.ExemplarIndisponivel(ParaAlugar);
 
         Usuario.RegistrarEmprestimo(CriarEmprestimo(Usuario, ParaAlugar));
+
+        return "Emprestimo realizado com sucesso";
     }
 
-    public void Devolver(Usuario Usuario, Livro Livro) {
+    public String Devolver(Usuario Usuario, Livro Livro) {
 
         for(Emprestimo E : Usuario.getEmprestimosAtuais()){
 
@@ -47,19 +48,17 @@ public class ProfessorOk implements EmprestimoBehavior {
                 else
                     Usuario.setEmprestimoManager(new ProfessorDevedor());
 
-                return;
+                return "Devolvido com sucesso";
             }
         }
 
-        System.out.println("Erro, ususario não tem esse livro");
-        return;
+        return "Erro, ususario não tem esse livro";
     }
 
-    public void Reservar(Usuario Usuario, Livro Livro) {
+    public String Reservar(Usuario Usuario, Livro Livro) {
 
         if(Usuario.getListReserva().size() >= 3){
-            System.out.println("Limite de reservas");    
-            return;
+            return "Limite de reservas";
         }
 
         List<Reserva> a = Usuario.getListReserva();
@@ -67,7 +66,7 @@ public class ProfessorOk implements EmprestimoBehavior {
 
         Usuario.setListReserva(a);
 
-        System.out.println("Reserva realizada");    
+        return "Reserva realizada";   
     }
 
     public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {

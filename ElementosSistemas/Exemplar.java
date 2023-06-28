@@ -7,9 +7,11 @@ public class Exemplar {
     private Livro Livro;
     private Emprestimo Emprestimo;
 
-    public void MostrarInfo(){
-        System.out.print("Id do exemplar: " + Id);
-        Emprestimo.MostrarInfo();
+    public String MostrarInfo(){
+        String Msg = "";
+        Msg += "Id do exemplar: " + Id;
+        Msg += Emprestimo.MostrarInfo();
+        return Msg;
     }
 
     public String getTitulo(){

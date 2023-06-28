@@ -12,11 +12,11 @@ import StrategyObserver.EmprestimoBehavior;
 
 public class GradMax implements EmprestimoBehavior{
 
-    public void Alugar(Usuario Usuario, Livro Livro) {
-        System.out.println("Maximo de emprestimos já atingidos");
+    public String Alugar(Usuario Usuario, Livro Livro) {
+        return "Maximo de emprestimos já atingidos";
     }
 
-    public void Devolver(Usuario Usuario, Livro Livro) {
+    public String Devolver(Usuario Usuario, Livro Livro) {
 
         for(Emprestimo E : Usuario.getEmprestimosAtuais()){
 
@@ -31,19 +31,17 @@ public class GradMax implements EmprestimoBehavior{
                 else
                     Usuario.setEmprestimoManager(new GradDevedor());
 
-                return;
+                return "Devolvido com sucesso";
             }
         }
 
-        System.out.println("Erro, ususario não tem esse livro");
-        return;
+        return "Erro, ususario não tem esse livro";
     }
 
-    public void Reservar(Usuario Usuario, Livro Livro) {
+    public String Reservar(Usuario Usuario, Livro Livro) {
 
         if(Usuario.getListReserva().size() >= 3){
-            System.out.println("Limite de reservas");    
-            return;
+            return "Limite de reservas";
         }
 
         List<Reserva> a = Usuario.getListReserva();
@@ -51,7 +49,7 @@ public class GradMax implements EmprestimoBehavior{
 
         Usuario.setListReserva(a);
 
-        System.out.println("Reserva realizada");    
+        return "Reserva realizada";   
     }
 
     public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {

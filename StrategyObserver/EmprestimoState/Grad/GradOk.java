@@ -12,27 +12,23 @@ import StrategyObserver.EmprestimoBehavior;
 
 public class GradOk implements EmprestimoBehavior{
     
-    public void Alugar(Usuario Usuario, Livro Livro) {
+    public String Alugar(Usuario Usuario, Livro Livro) {
 
         if(Usuario.IsDevedor()){
-            System.out.println("Usuario Devedor");
             Usuario.setEmprestimoManager(new GradDevedor());
-            return;
+            return "Usuario Devedor";
         }
 
         if (!Livro.TemExemplares()){
-            System.out.println("Sem Exemplares");
-            return;
+            return "Sem Exemplares";
         }
 
         if(!Usuario.TemReserva(Livro) && !Livro.ExemplaresNaoReservado() ) {
-            System.out.println("Todos exemplares reservados");
-            return;
+            return "Todos exemplares reservados";
         }
 
         if (Usuario.JaTemLivro(Livro)){
-            System.out.println("Já pegou esse livro");
-            return;
+            return "Já pegou esse livro";
         }
 
         Exemplar ParaAlugar = Livro.GetExemplarDisponivel();
@@ -43,9 +39,11 @@ public class GradOk implements EmprestimoBehavior{
 
         if(Usuario.QuantidadeEmprestimos() >= 3)
             Usuario.setEmprestimoManager(new GradMax());
+        
+        return "Emprestimo realizado com sucesso";
     }
 
-    public void Devolver(Usuario Usuario, Livro Livro) {
+    public String Devolver(Usuario Usuario, Livro Livro) {
 
         for(Emprestimo E : Usuario.getEmprestimosAtuais()){
 
@@ -60,19 +58,17 @@ public class GradOk implements EmprestimoBehavior{
                 else
                     Usuario.setEmprestimoManager(new GradDevedor());
 
-                return;
+                return "Devolvido com sucesso";
             }
         }
 
-        System.out.println("Erro, ususario não tem esse livro");
-        return;
+        return "Erro, ususario não tem esse livro";
     }
 
-    public void Reservar(Usuario Usuario, Livro Livro) {
+    public String Reservar(Usuario Usuario, Livro Livro) {
 
         if(Usuario.getListReserva().size() >= 3){
-            System.out.println("Limite de reservas");    
-            return;
+            return "Limite de reservas";
         }
 
         List<Reserva> a = Usuario.getListReserva();
@@ -80,7 +76,7 @@ public class GradOk implements EmprestimoBehavior{
 
         Usuario.setListReserva(a);
 
-        System.out.println("Reserva realizada");    
+        return "Reserva realizada";   
     }
 
     public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {

@@ -13,6 +13,6 @@ public class ObserverNada extends ObserverBehavior {
 
 
     @Override
-    public void MostrarInfo() {}
+    public String MostrarInfo() { return "";}
     
 }
