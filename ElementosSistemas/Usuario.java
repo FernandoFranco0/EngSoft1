@@ -20,41 +20,6 @@ public class Usuario {
     private ObserverBehavior ObserverManager;
     private EmprestimoBehavior EmprestimoManager;
 
-    public EmprestimoBehavior getEmprestimoManager() {
-        return EmprestimoManager;
-    }
-    public void setEmprestimoManager(EmprestimoBehavior emprestimoManager) {
-        EmprestimoManager = emprestimoManager;
-    }
-
-    public String getNome() {
-        return Nome;
-    }  
-
-    public List<Reserva> getListReserva() {
-        return ListReserva;
-    }
-    public void setListReserva(List<Reserva> listReserva) {
-        ListReserva = listReserva;
-    }
-
-    public List<Emprestimo> getEmprestimosPassados() {
-        return EmprestimosPassados;
-    }
-    public void setEmprestimosPassados(List<Emprestimo> emprestimosPassados) {
-        EmprestimosPassados = emprestimosPassados;
-    }
-
-    public List<Emprestimo> getEmprestimosAtuais() {
-        return EmprestimosAtuais;
-    }
-    public void setEmprestimosAtuais(List<Emprestimo> emprestimosAtuais) {
-        EmprestimosAtuais = emprestimosAtuais;
-    }
-
-
-    // mudar para a classe de mensagem
-
     public String ComandoUsu(){
         String Msg = "";
         Msg += "Emprestimos finalizados:\n ";
@@ -124,6 +89,18 @@ public class Usuario {
         return false;
     }
 
+    public boolean RemoverReserva(Livro L){
+
+        for(Reserva R : ListReserva) {
+            if(R.getLivro().equals(L)){
+                ListReserva.remove(R);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public boolean JaTemLivro(Livro L){
         for(Emprestimo E : EmprestimosAtuais){
             if(L.EExemplar(E.getExemplar()))
@@ -139,5 +116,63 @@ public class Usuario {
 
     public int QuantidadeEmprestimos(){
         return EmprestimosAtuais.size();
+    }
+
+    // --------------------------getters and setters-------------------------
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String nome) {
+        Nome = nome;
+    }
+
+    public List<Reserva> getListReserva() {
+        return ListReserva;
+    }
+
+    public void setListReserva(List<Reserva> listReserva) {
+        ListReserva = listReserva;
+    }
+
+    public List<Emprestimo> getEmprestimosPassados() {
+        return EmprestimosPassados;
+    }
+
+    public void setEmprestimosPassados(List<Emprestimo> emprestimosPassados) {
+        EmprestimosPassados = emprestimosPassados;
+    }
+
+    public List<Emprestimo> getEmprestimosAtuais() {
+        return EmprestimosAtuais;
+    }
+
+    public void setEmprestimosAtuais(List<Emprestimo> emprestimosAtuais) {
+        EmprestimosAtuais = emprestimosAtuais;
+    }
+
+    public ObserverBehavior getObserverManager() {
+        return ObserverManager;
+    }
+
+    public void setObserverManager(ObserverBehavior observerManager) {
+        ObserverManager = observerManager;
+    }
+
+    public EmprestimoBehavior getEmprestimoManager() {
+        return EmprestimoManager;
+    }
+
+    public void setEmprestimoManager(EmprestimoBehavior emprestimoManager) {
+        EmprestimoManager = emprestimoManager;
     }
 }

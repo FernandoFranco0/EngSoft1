@@ -47,6 +47,18 @@ public class Livro implements Subject{
         return Msg;
     }
 
+    public boolean RemoverReserva(Usuario U){
+
+        for(Reserva R : ListaReservas) {
+            if(R.getUsuario().equals(U)){
+                ListaReservas.remove(R);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void ExemplarDisponivel(Exemplar E){
         ListaExemplarIndisponiveis.remove(E);
         ListaExemplarDisponiveis.add(E);

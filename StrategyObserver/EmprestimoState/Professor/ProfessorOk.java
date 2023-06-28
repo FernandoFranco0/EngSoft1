@@ -24,6 +24,9 @@ public class ProfessorOk implements EmprestimoBehavior {
             return "Sem Exemplares";
         }
 
+        Usuario.RemoverReserva(Livro);
+        Livro.RemoverReserva(Usuario);
+
         Exemplar ParaAlugar = Livro.GetExemplarDisponivel();
         
         Livro.ExemplarIndisponivel(ParaAlugar);

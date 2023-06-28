@@ -31,6 +31,9 @@ public class GradOk implements EmprestimoBehavior{
             return "Já pegou esse livro";
         }
 
+        Usuario.RemoverReserva(Livro);
+        Livro.RemoverReserva(Usuario);
+
         Exemplar ParaAlugar = Livro.GetExemplarDisponivel();
         
         Livro.ExemplarIndisponivel(ParaAlugar);

@@ -1,7 +1,5 @@
 package ElementosSistemas;
 
-import Estado.*;
-
 public class Exemplar {
     private int Id;
     private Livro Livro;
