@@ -28,7 +28,7 @@ public class Emprestimo {
     }
     
     public void Finalizar(){
-        Estado.Devolver();
+        Estado.Devolver(this);
     }
 
     public String getUsuarioNome(){
