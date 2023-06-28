@@ -39,8 +39,45 @@ public class Livro implements Subject{
         }
     }
 
+    public void ExemplarDisponivel(Exemplar E){
+        ListaExemplarIndisponiveis.remove(E);
+        ListaExemplarDisponiveis.add(E);
+    }
+
+    public void ExemplarIndisponivel(Exemplar E){
+        ListaExemplarIndisponiveis.add(E);
+        ListaExemplarDisponiveis.remove(E);
+    }
+
     public String getTitulo() {
         return Titulo;
+    }
+
+    public boolean TemExemplares(){
+
+        if( ListaExemplarDisponiveis.size() <= 0){
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean ExemplaresNaoReservado(){
+        if(ListaExemplarDisponiveis.size() > 0)
+            return true;
+
+        return false;
+    }
+
+    public Exemplar GetExemplarDisponivel(){
+        return ListaExemplarDisponiveis.get(0);
+    }
+
+    public boolean EExemplar(Exemplar E){
+        if(ListaExemplarIndisponiveis.indexOf(E) >= 0  || ListaExemplarDisponiveis.indexOf(E) >= 0)
+            return true;
+        
+        return false;
     }
 
     public void registerObserver(ObserverBehavior o) {
@@ -73,9 +110,6 @@ public class Livro implements Subject{
 		if (i >= 0) {
 			ListaReservas.remove(i);
 		}
-
-        if(ListaReservas.size() >= 2)
-            notifyObservers();
     }
 
     public List<Exemplar> getListaExemplarIndisponiveis() {

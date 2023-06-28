@@ -15,4 +15,13 @@ public class Exemplar {
     public String getTitulo(){
         return Livro.getTitulo();
     }
+
+    public Livro getLivro() {
+        return Livro;
+    }
+
+    public void setLivro(Livro livro) {
+        Livro = livro;
+    }
+
 }

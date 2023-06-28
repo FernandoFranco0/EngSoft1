@@ -1,5 +1,6 @@
 package ElementosSistemas;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import StrategyObserver.EmprestimoBehavior;
@@ -18,6 +19,13 @@ public class Usuario {
     // ----------------------------
     private ObserverBehavior ObserverManager;
     private EmprestimoBehavior EmprestimoManager;
+
+    public EmprestimoBehavior getEmprestimoManager() {
+        return EmprestimoManager;
+    }
+    public void setEmprestimoManager(EmprestimoBehavior emprestimoManager) {
+        EmprestimoManager = emprestimoManager;
+    }
 
     public String getNome() {
         return Nome;
@@ -89,5 +97,52 @@ public class Usuario {
         else{
             // mensagem erro
         }
+    }
+
+    public void RetirarEmpre(Emprestimo E){
+        E.Finalizar();
+        EmprestimosAtuais.remove(E);
+        EmprestimosPassados.add(E);
+    }
+
+    public boolean IsDevedor(){
+        LocalDate Hoje = java.time.LocalDate.now();
+
+        for(Emprestimo E : EmprestimosAtuais){
+            if(Hoje.isAfter(E.getDataDevolucao())){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean TemReserva(Livro L){
+        for(Reserva R : ListReserva) {
+            if(R.getLivro().equals(L)){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean JaTemLivro(Livro L){
+        for(Emprestimo E : EmprestimosAtuais){
+            if(L.EExemplar(E.getExemplar()))
+                return true;
+        }
+
+        return false;
+    }
+
+    public void RegistrarEmprestimo(Exemplar E){
+        LocalDate Hoje = java.time.LocalDate.now();
+
+        EmprestimosAtuais.add(new Emprestimo(this, E, Hoje));
+    }
+
+    public int QuantidadeEmprestimos(){
+        return EmprestimosAtuais.size();
     }
 }
