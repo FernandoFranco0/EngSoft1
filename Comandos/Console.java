@@ -20,7 +20,10 @@ public class Console {
     public void LerExecutar(){
         String Input = System.console().readLine();
         String[] Params = ParseInput(Input);
-        HashComando.get(Params[0]).Executar(Params[1], Params[2]);
+
+        String FeedBack = HashComando.get(Params[0]).Executar(Params[1], Params[2]);
+        
+        Exibir(FeedBack);
     }
 
     public void Exibir(String Msg){
