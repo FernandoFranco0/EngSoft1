@@ -1,5 +1,6 @@
 package StrategyObserver.EmprestimoState.Grad;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import ElementosSistemas.Emprestimo;
@@ -51,6 +52,11 @@ public class GradDevedor implements EmprestimoBehavior {
         Usuario.setListReserva(a);
 
         System.out.println("Reserva realizada");    
+    }
+
+    public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {
+        LocalDate Hoje = java.time.LocalDate.now();
+        return new Emprestimo(Usuario, Exemplar, Hoje, Hoje.plusDays(3));
     }
     
 }

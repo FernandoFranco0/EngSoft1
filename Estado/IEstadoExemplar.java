@@ -4,6 +4,5 @@ import ElementosSistemas.Emprestimo;
 
 public interface IEstadoExemplar {
     public void MostrarInfo(Emprestimo E);
-    public void Alugar();
-    public void Devolver();
+    public void Devolver(Emprestimo E);
 }

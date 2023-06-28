@@ -58,14 +58,14 @@ public class Usuario {
     public void ComandoUsu(){
         System.out.println("Emprestimos finalizados: ");
         for(Emprestimo E : EmprestimosPassados){
-            System.out.println("Livro: " + E.getLivroNome() +
+            System.out.println("Livro: " + E.getExemplarNome() +
                                " pego emprestado em " + E.getDataEmprestimo() + " ate" + E.getDataDevolucao());
         }
         System.out.println();
 
         System.out.println("Emprestimos ativos: ");
         for(Emprestimo E : EmprestimosAtuais){
-            System.out.println("Livro: " + E.getLivroNome() +
+            System.out.println("Livro: " + E.getExemplarNome() +
                                " pego emprestado em " + E.getDataEmprestimo() + " ate" + E.getDataDevolucao());
         }
         System.out.println();
@@ -136,10 +136,8 @@ public class Usuario {
         return false;
     }
 
-    public void RegistrarEmprestimo(Exemplar E){
-        LocalDate Hoje = java.time.LocalDate.now();
-
-        EmprestimosAtuais.add(new Emprestimo(this, E, Hoje));
+    public void RegistrarEmprestimo(Emprestimo E){
+        EmprestimosAtuais.add(E);
     }
 
     public int QuantidadeEmprestimos(){

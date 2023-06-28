@@ -1,6 +1,5 @@
 package ElementosSistemas;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import StrategyObserver.Observer.ObserverBehavior;
@@ -49,10 +48,6 @@ public class Livro implements Subject{
         ListaExemplarDisponiveis.remove(E);
     }
 
-    public String getTitulo() {
-        return Titulo;
-    }
-
     public boolean TemExemplares(){
 
         if( ListaExemplarDisponiveis.size() <= 0){
@@ -80,6 +75,20 @@ public class Livro implements Subject{
         return false;
     }
 
+    public void Reservar(Reserva R){
+        ListaReservas.add(R);
+
+        if(ListaReservas.size() >= 2)
+            notifyObservers();
+    }
+    
+    public void RemoverReserva(Reserva R){
+        int i = ListaReservas.indexOf(R);
+		if (i >= 0) {
+			ListaReservas.remove(i);
+		}
+    }
+
     public void registerObserver(ObserverBehavior o) {
         Observers.add(o);
     }
@@ -98,18 +107,41 @@ public class Livro implements Subject{
 		}
     }
 
-    public void Reservar(Reserva R){
-        ListaReservas.add(R);
+    // --------------------------getters and setters-------------------------
 
-        if(ListaReservas.size() >= 2)
-            notifyObservers();
+    public int getId() {
+        return Id;
     }
-    
-    public void RemoverReserva(Reserva R){
-        int i = ListaReservas.indexOf(R);
-		if (i >= 0) {
-			ListaReservas.remove(i);
-		}
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getTitulo() {
+        return Titulo;
+    }
+    public void setTitulo(String titulo) {
+        Titulo = titulo;
+    }
+
+    public String getEditora() {
+        return Editora;
+    }
+    public void setEditora(String editora) {
+        Editora = editora;
+    }
+
+    public int getEdicao() {
+        return Edicao;
+    }
+    public void setEdicao(int edicao) {
+        Edicao = edicao;
+    }
+
+    public List<String> getAutores() {
+        return Autores;
+    }
+    public void setAutores(List<String> autores) {
+        Autores = autores;
     }
 
     public List<Exemplar> getListaExemplarIndisponiveis() {
@@ -131,5 +163,12 @@ public class Livro implements Subject{
     }
     public void setListaReservas(List<Reserva> listaReservas) {
         ListaReservas = listaReservas;
+    }
+
+    public ArrayList<ObserverBehavior> getObservers() {
+        return Observers;
+    }
+    public void setObservers(ArrayList<ObserverBehavior> observers) {
+        Observers = observers;
     }
 }

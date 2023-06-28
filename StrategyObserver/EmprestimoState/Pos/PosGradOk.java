@@ -1,5 +1,6 @@
 package StrategyObserver.EmprestimoState.Pos;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import ElementosSistemas.Emprestimo;
@@ -38,7 +39,7 @@ public class PosGradOk implements EmprestimoBehavior{
         
         Livro.ExemplarIndisponivel(ParaAlugar);
 
-        Usuario.RegistrarEmprestimo(ParaAlugar);
+        Usuario.RegistrarEmprestimo(CriarEmprestimo(Usuario, ParaAlugar));
 
         if(Usuario.QuantidadeEmprestimos() >= 4)
             Usuario.setEmprestimoManager(new PosGradMax());
@@ -80,6 +81,11 @@ public class PosGradOk implements EmprestimoBehavior{
         Usuario.setListReserva(a);
 
         System.out.println("Reserva realizada");    
+    }
+
+    public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {
+        LocalDate Hoje = java.time.LocalDate.now();
+        return new Emprestimo(Usuario, Exemplar, Hoje, Hoje.plusDays(4));
     }
 
 }

@@ -8,15 +8,9 @@ public class ExemplarEmprestado implements IEstadoExemplar{
         System.out.print(" -- Exemplar emprestado para " + E.getUsuarioNome() + 
                          " em " + E.getDataEmprestimo() + " ate " + E.getDataDevolucao());
     }
-  
-    public void Alugar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Alugar'");
-    }
     
-    public void Devolver() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'Devolver'");
+    public void Devolver(Emprestimo E) {
+        E.setEstado(new ExemplarDisponivel());
     }
     
 }
