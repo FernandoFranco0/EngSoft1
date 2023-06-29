@@ -11,6 +11,7 @@ public class Livro implements Subject{
     private String Editora;
     private int Edicao;
     private List<String> Autores;
+    private int AnoPublicacao;
 
     // isso aqui é basicamente um hack para o alugar, mas não precisa para o resto pois esta sendo feito com o state
     private List<Exemplar> ListaExemplarIndisponiveis;    
@@ -18,6 +19,19 @@ public class Livro implements Subject{
 
     private List<Reserva> ListaReservas;
     private ArrayList<ObserverBehavior> Observers;
+
+    public Livro(int id, String titulo, String editora, int edicao, List<String> autores, int anoPublicacao) {
+        Id = id;
+        Titulo = titulo;
+        Editora = editora;
+        Edicao = edicao;
+        Autores = autores;
+        AnoPublicacao = anoPublicacao;
+        ListaExemplarDisponiveis = new ArrayList<Exemplar>();
+        ListaExemplarIndisponiveis = new ArrayList<Exemplar>();
+        ListaReservas = new ArrayList<Reserva>();
+        Observers = new ArrayList<ObserverBehavior>();
+    }
 
     public String ComandoLiv(){
         String Msg = "";

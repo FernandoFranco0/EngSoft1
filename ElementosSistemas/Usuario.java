@@ -1,6 +1,7 @@
 package ElementosSistemas;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import StrategyObserver.EmprestimoBehavior;
@@ -19,6 +20,17 @@ public class Usuario {
     // ----------------------------
     private ObserverBehavior ObserverManager;
     private EmprestimoBehavior EmprestimoManager;
+
+    public Usuario(int id, String nome, ObserverBehavior observerManager,
+            EmprestimoBehavior emprestimoManager) {
+        Id = id;
+        Nome = nome;
+        ListReserva = new ArrayList<Reserva>();
+        EmprestimosPassados = new ArrayList<Emprestimo>();
+        EmprestimosAtuais = new ArrayList<Emprestimo>();
+        ObserverManager = observerManager;
+        EmprestimoManager = emprestimoManager;
+    }
 
     public String ComandoUsu(){
         String Msg = "";

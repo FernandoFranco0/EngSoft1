@@ -5,6 +5,12 @@ public class Exemplar {
     private Livro Livro;
     private Emprestimo Emprestimo;
 
+    public Exemplar(int id, Livro livro) {
+        Id = id;
+        Livro = livro;
+        Emprestimo = new Emprestimo(null, this, null, null);
+    }
+
     public String MostrarInfo(){
         String Msg = "";
         Msg += "Id do exemplar: " + Id;

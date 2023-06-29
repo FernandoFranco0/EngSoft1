@@ -6,8 +6,6 @@ public class BibliotecaFacade{
     
     private boolean Running;
     private Dados Registros;
-    private HashMap<Integer,Usuario> HashUsuario;
-    private HashMap<Integer,Livro> HashLivros;
     private List<Reserva> ListaReservas;
 
     // Padrão Singleton
