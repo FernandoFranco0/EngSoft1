@@ -1,4 +1,4 @@
-package EmprestimoState;
+package Decorator.Manager;
 
 import ElementosSistemas.Emprestimo;
 import ElementosSistemas.Exemplar;

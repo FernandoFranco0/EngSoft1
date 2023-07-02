@@ -1,22 +1,19 @@
 package Decorator.Manager;
 
 import Decorator.Base.AbstractBase;
-import Decorator.Base.Professor;
-import Decorator.Status.Devedor;
-import Decorator.Status.ReservaMax;
 import ElementosSistemas.Emprestimo;
 import ElementosSistemas.Exemplar;
 import ElementosSistemas.Livro;
 import ElementosSistemas.Usuario;
-import EmprestimoState.EmprestimoBehavior;
+import Fabricas.FabricaDecorator;
 
 public class ProfessorManager implements EmprestimoBehavior {
 
-    AbstractBase g = new Professor();
+    AbstractBase g = FabricaDecorator.NovoProfessor();
 
     public String Alugar(Usuario Usuario, Livro Livro) {
         if(Usuario.IsDevedor())
-            g = new Devedor(g);
+            g = FabricaDecorator.NovoDevedor(g);
             
         String Msg = g.Alugar(g, Usuario, Livro);
 
@@ -24,14 +21,20 @@ public class ProfessorManager implements EmprestimoBehavior {
     }
 
     public String Devolver(Usuario Usuario, Livro Livro) {
-        return g.Devolver(Usuario, Livro);
+
+        String Msg = g.Devolver(Usuario, Livro);
+
+        if(!Usuario.IsDevedor())
+            g = g.removeDevedor();
+
+        return Msg;
     }
 
     public String Reservar(Usuario Usuario, Livro Livro) {
         String Msg = g.Reservar(Usuario, Livro);
 
         if(Usuario.getListReserva().size() >= 3)
-            g = new ReservaMax(g);
+            g = FabricaDecorator.NovoReservaMax(g);
         
         return Msg;
     }

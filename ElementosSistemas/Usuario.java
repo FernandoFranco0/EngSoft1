@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import EmprestimoState.EmprestimoBehavior;
+import Decorator.Manager.EmprestimoBehavior;
 import Observer.ObserverBehavior;
 
 public class Usuario {

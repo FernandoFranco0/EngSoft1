@@ -10,9 +10,11 @@ import ElementosSistemas.Reserva;
 import ElementosSistemas.Usuario;
 import Fabricas.FabricaElementosSistema;
 
-public class Professor extends AbstractBase {
+public abstract class Aluno extends AbstractBase {
 
-    public Professor() {
+    protected int MaxDiasEmprestados;
+
+    public Aluno() {
         super(null);
     }
 
@@ -21,6 +23,14 @@ public class Professor extends AbstractBase {
 
         if (!Livro.TemExemplares()){
             return "Sem Exemplares";
+        }
+
+        if(!Usuario.TemReserva(Livro) && !Livro.ExemplaresNaoReservado() ) {
+            return "Todos exemplares reservados";
+        }
+
+        if (Usuario.JaTemLivro(Livro)){
+            return "Já pegou esse livro";
         }
 
         Usuario.RemoverReserva(Livro);
@@ -67,12 +77,11 @@ public class Professor extends AbstractBase {
     @Override
     public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {
         LocalDate Hoje = java.time.LocalDate.now();
-        return FabricaElementosSistema.NovoEmprestimo(Usuario, Exemplar, Hoje, Hoje.plusDays(7));
+        return FabricaElementosSistema.NovoEmprestimo(Usuario, Exemplar, Hoje, Hoje.plusDays(MaxDiasEmprestados));
     }
 
     
     public String getNome(){
-        return "Professor ";
+        return "Aluno ";
     };
-    
 }

@@ -1,6 +1,7 @@
 package Estado;
 
 import ElementosSistemas.Emprestimo;
+import Fabricas.FabricaEstado;
 
 public class ExemplarEmprestado implements IEstadoExemplar{
 
@@ -9,7 +10,7 @@ public class ExemplarEmprestado implements IEstadoExemplar{
     }
     
     public String Devolver(Emprestimo E) {
-        E.setEstado(new ExemplarDisponivel());
+        E.setEstado(FabricaEstado.NovoExemplarEmprestado());
         return "Emprestimo agora está devolvido";
     }
     

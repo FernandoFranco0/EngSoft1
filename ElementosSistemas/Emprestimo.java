@@ -2,8 +2,8 @@ package ElementosSistemas;
 
 import java.time.LocalDate;
 
-import Estado.ExemplarEmprestado;
 import Estado.IEstadoExemplar;
+import Fabricas.FabricaEstado;
 
 public class Emprestimo {
 
@@ -19,7 +19,7 @@ public class Emprestimo {
         DataEmprestimo = dataEmprestimo;
         DataDevolucao = dataDevolucao;
 
-        Estado = new ExemplarEmprestado();
+        Estado = FabricaEstado.NovoExemplarEmprestado();
 
     }
 

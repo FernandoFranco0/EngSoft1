@@ -1,5 +1,7 @@
 package ElementosSistemas;
 
+import Fabricas.FabricaElementosSistema;
+
 public class Exemplar {
     private int Id;
     private Livro Livro;
@@ -8,7 +10,7 @@ public class Exemplar {
     public Exemplar(int id, Livro livro) {
         Id = id;
         Livro = livro;
-        Emprestimo = new Emprestimo(null, this, null, null);
+        Emprestimo = FabricaElementosSistema.NovoEmprestimo(null, this, null, null);
     }
 
     public String MostrarInfo(){
