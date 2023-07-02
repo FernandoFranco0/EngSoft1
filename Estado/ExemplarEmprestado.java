@@ -10,7 +10,7 @@ public class ExemplarEmprestado implements IEstadoExemplar{
     }
     
     public String Devolver(Emprestimo E) {
-        E.setEstado(FabricaEstado.NovoExemplarEmprestado());
+        E.setEstado(FabricaEstado.NovoExemplarDisponivel());
         return "Emprestimo agora está devolvido";
     }
     

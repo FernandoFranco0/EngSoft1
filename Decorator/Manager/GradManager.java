@@ -5,7 +5,7 @@ import Fabricas.FabricaDecorator;
 public class GradManager extends AlunoManager {
 
     public GradManager(){
-        this.g = FabricaDecorator.NovoGrad();
+        this.Base = FabricaDecorator.NovoGrad();
         this.EmprestimoMax = 3;
     }
     

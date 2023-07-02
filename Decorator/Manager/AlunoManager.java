@@ -7,47 +7,47 @@ import ElementosSistemas.Livro;
 import ElementosSistemas.Usuario;
 import Fabricas.FabricaDecorator;
 
-public class AlunoManager implements EmprestimoBehavior {
+public abstract class AlunoManager implements EmprestimoBehavior {
 
-    AbstractBase g;
+    protected AbstractBase Base;
     protected int EmprestimoMax;
     
 
     public String Alugar(Usuario Usuario, Livro Livro) {
         if(Usuario.IsDevedor())
-            g = FabricaDecorator.NovoDevedor(g);
+            Base = FabricaDecorator.NovoDevedor(Base);
             
-        String Msg = g.Alugar(g, Usuario, Livro);
+        String Msg = Base.Alugar(Base, Usuario, Livro);
 
         if(Usuario.QuantidadeEmprestimos() >= EmprestimoMax)
-            g = FabricaDecorator.NovoEmprestimoMax(g);
+            Base = FabricaDecorator.NovoEmprestimoMax(Base);
 
         return Msg;
     }
 
     public String Devolver(Usuario Usuario, Livro Livro) {
 
-        String Msg = g.Devolver(Usuario, Livro);
+        String Msg = Base.Devolver(Usuario, Livro);
 
         if(!Usuario.IsDevedor())
-            g = g.removeDevedor();
+            Base = Base.removeDevedor();
         
-        g = g.removeEmprestimoMax();
+        Base = Base.removeEmprestimoMax();
         
         return Msg;
     }
 
     public String Reservar(Usuario Usuario, Livro Livro) {
-        String Msg = g.Reservar(Usuario, Livro);
+        String Msg = Base.Reservar(Usuario, Livro);
 
         if(Usuario.getListReserva().size() >= EmprestimoMax)
-            g = FabricaDecorator.NovoReservaMax(g);
+            Base = FabricaDecorator.NovoReservaMax(Base);
         
         return Msg;
     }
 
     public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {
-        return g.CriarEmprestimo(Usuario, Exemplar);
+        return Base.CriarEmprestimo(Usuario, Exemplar);
     }
     
 }

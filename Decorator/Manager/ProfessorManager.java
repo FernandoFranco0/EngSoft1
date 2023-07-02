@@ -9,38 +9,38 @@ import Fabricas.FabricaDecorator;
 
 public class ProfessorManager implements EmprestimoBehavior {
 
-    AbstractBase g = FabricaDecorator.NovoProfessor();
+    protected AbstractBase Base = FabricaDecorator.NovoProfessor();
 
     public String Alugar(Usuario Usuario, Livro Livro) {
         if(Usuario.IsDevedor())
-            g = FabricaDecorator.NovoDevedor(g);
+            Base = FabricaDecorator.NovoDevedor(Base);
             
-        String Msg = g.Alugar(g, Usuario, Livro);
+        String Msg = Base.Alugar(Base, Usuario, Livro);
 
         return Msg;
     }
 
     public String Devolver(Usuario Usuario, Livro Livro) {
 
-        String Msg = g.Devolver(Usuario, Livro);
+        String Msg = Base.Devolver(Usuario, Livro);
 
         if(!Usuario.IsDevedor())
-            g = g.removeDevedor();
+            Base = Base.removeDevedor();
 
         return Msg;
     }
 
     public String Reservar(Usuario Usuario, Livro Livro) {
-        String Msg = g.Reservar(Usuario, Livro);
+        String Msg = Base.Reservar(Usuario, Livro);
 
         if(Usuario.getListReserva().size() >= 3)
-            g = FabricaDecorator.NovoReservaMax(g);
+            Base = FabricaDecorator.NovoReservaMax(Base);
         
         return Msg;
     }
 
     public Emprestimo CriarEmprestimo(Usuario Usuario, Exemplar Exemplar) {
-        return g.CriarEmprestimo(Usuario, Exemplar);
+        return Base.CriarEmprestimo(Usuario, Exemplar);
     }    
-    
+
 }
