@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import StrategyObserver.Decorator.Manager.GradManager;
-import StrategyObserver.Decorator.Manager.PosGradManager;
-import StrategyObserver.Decorator.Manager.ProfessorManager;
-import StrategyObserver.Observer.ObserverBehavior;
-import StrategyObserver.Observer.ObserverNada;
-import StrategyObserver.Observer.ObserverProfessor;
+import Decorator.Manager.GradManager;
+import Decorator.Manager.PosGradManager;
+import Decorator.Manager.ProfessorManager;
+import Observer.ObserverNada;
+import Observer.ObserverProfessor;
 
 
 public class Dados {

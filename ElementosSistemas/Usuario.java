@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import StrategyObserver.EmprestimoBehavior;
-import StrategyObserver.Observer.ObserverBehavior;
+import EmprestimoState.EmprestimoBehavior;
+import Observer.ObserverBehavior;
 
 public class Usuario {
     private int Id;

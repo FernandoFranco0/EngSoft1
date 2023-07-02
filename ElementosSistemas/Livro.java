@@ -2,8 +2,8 @@ package ElementosSistemas;
 import java.util.ArrayList;
 import java.util.List;
 
-import StrategyObserver.Observer.ObserverBehavior;
-import StrategyObserver.Observer.Subject;
+import Observer.ObserverBehavior;
+import Observer.Subject;
 
 public class Livro implements Subject{
     private int Id;

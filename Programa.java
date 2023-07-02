@@ -1,7 +1,7 @@
-import StrategyObserver.Decorator.*;
-import StrategyObserver.Decorator.Base.AbstractBase;
-import StrategyObserver.Decorator.Base.Grad;
-import StrategyObserver.Decorator.Status.Devedor;
+import Decorator.*;
+import Decorator.Base.AbstractBase;
+import Decorator.Base.Grad;
+import Decorator.Status.Devedor;
 
 public class Programa {
     public static void main(String[] args) {
