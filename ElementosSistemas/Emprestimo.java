@@ -19,7 +19,7 @@ public class Emprestimo {
         DataEmprestimo = dataEmprestimo;
         DataDevolucao = dataDevolucao;
 
-        Estado = FabricaEstado.NovoExemplarEmprestado();
+        Estado = FabricaEstado.NovoExemplarDisponivel();
 
     }
 

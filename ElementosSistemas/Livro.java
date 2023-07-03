@@ -40,20 +40,20 @@ public class Livro implements Subject{
         if(ListaReservas.size() > 0){
             Msg +="Reservador por: ";
             for(Reserva R : ListaReservas){
-                Msg += R.getUsuario() + ", ";
+                Msg += R.getUsuarioNome() + ", ";
             }
         }
 
         Msg += "\n";
 
         for(Exemplar E : ListaExemplarIndisponiveis){
-            Msg += E.MostrarInfo();
+            Msg += E.MostrarInfo() + "\n";
         }
 
         Msg += "\n";
 
         for(Exemplar E : ListaExemplarDisponiveis){
-            Msg += E.MostrarInfo();
+            Msg += E.MostrarInfo()+ "\n";
         }
 
         Msg += "\n";

@@ -26,6 +26,10 @@ public class Reserva {
         return Livro.getTitulo();
     }
 
+    public String getUsuarioNome(){
+        return Usuario.getNome();
+    }
+
     public Livro getLivro() {
         return Livro;
     }

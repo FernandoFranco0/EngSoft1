@@ -10,9 +10,9 @@ import Fabricas.FabricaObserver;
 
 
 public class Dados {
-    private HashMap<Integer,Usuario> HashUsuario;
-    private HashMap<Integer,Livro> HashLivros;
-    private List<Reserva> ListaReservas;
+    private HashMap<Integer,Usuario> HashUsuario = new HashMap<Integer,Usuario>();
+    private HashMap<Integer,Livro> HashLivros = new HashMap<Integer,Livro>();
+    private List<Reserva> ListaReservas = new ArrayList<Reserva >();
 
     // Padrão Singleton
     private static Dados Instancia;
