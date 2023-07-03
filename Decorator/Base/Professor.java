@@ -55,11 +55,16 @@ public class Professor extends AbstractBase {
 
     @Override
     public String Reservar(Usuario Usuario, Livro Livro) {
+        Reserva R = FabricaElementosSistema.NovaReserva(Livro, Usuario, null);
+        List<Reserva> ReservaUser = Usuario.getListReserva();        
+        List<Reserva> ReservaLivro = Livro.getListaReservas();
 
-        List<Reserva> a = Usuario.getListReserva();
-        a.add(FabricaElementosSistema.NovaReserva(Livro, Usuario, null));
+        ReservaUser.add(R);
+        ReservaLivro.add(R);
 
-        Usuario.setListReserva(a);
+        Usuario.setListReserva(ReservaUser);        
+        Livro.setListaReservas(ReservaLivro);
+
 
         return "Reserva realizada";   
     }
