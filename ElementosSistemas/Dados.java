@@ -37,6 +37,10 @@ public class Dados {
         return HashLivros.get(Id);
     }
 
+    public void GuardarReserva(Reserva R){
+        ListaReservas.add(R);
+    }
+
     public void CarregarLivros(){
 
         ArrayList<String> autores = new ArrayList<String>();

@@ -130,6 +130,11 @@ public class Usuario {
         return EmprestimosAtuais.size();
     }
 
+    public void GuardarReserva(Reserva R){
+        ListReserva.add(R);
+    }
+
+
     // --------------------------getters and setters-------------------------
 
     public int getId() {

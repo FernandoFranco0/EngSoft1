@@ -1,12 +1,10 @@
 package ElementosSistemas;
-import java.util.*;
 import Comandos.*;
 
 public class BibliotecaFacade{
     
     private boolean Running;
     private Dados Registros;
-    private List<Reserva> ListaReservas;
 
     // Padrão Singleton
     private static BibliotecaFacade Instancia;
@@ -78,6 +76,10 @@ public class BibliotecaFacade{
     public String Sair(){
         Running = false;
         return "Saiu com sucesso";
+    }
+
+    public void GuardarReserva(Reserva R){
+        Registros.GuardarReserva(R);
     }
     
     

@@ -3,6 +3,7 @@ package Decorator.Base;
 import java.time.LocalDate;
 import java.util.List;
 
+import ElementosSistemas.BibliotecaFacade;
 import ElementosSistemas.Emprestimo;
 import ElementosSistemas.Exemplar;
 import ElementosSistemas.Livro;
@@ -65,11 +66,12 @@ public abstract class Aluno extends AbstractBase {
 
     @Override
     public String Reservar(Usuario Usuario, Livro Livro) {
+        LocalDate Hoje = java.time.LocalDate.now();
+        Reserva R = FabricaElementosSistema.NovaReserva(Livro, Usuario, Hoje);
 
-        List<Reserva> a = Usuario.getListReserva();
-        a.add(FabricaElementosSistema.NovaReserva(Livro, Usuario, null));
-
-        Usuario.setListReserva(a);
+        Usuario.GuardarReserva(R);
+        Livro.GuardarReserva(R);
+        BibliotecaFacade.ObterInstancia().GuardarReserva(R);
 
         return "Reserva realizada";   
     }
