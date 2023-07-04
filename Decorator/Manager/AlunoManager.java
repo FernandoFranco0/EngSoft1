@@ -40,7 +40,7 @@ public abstract class AlunoManager implements EmprestimoBehavior {
     public String Reservar(Usuario Usuario, Livro Livro) {
         String Msg = Base.Reservar(Usuario, Livro);
 
-        if(Usuario.getListReserva().size() >= EmprestimoMax)
+        if(Usuario.QuantidadeReservas() >= EmprestimoMax)
             Base = FabricaDecorator.NovoReservaMax(Base);
         
         return Msg;

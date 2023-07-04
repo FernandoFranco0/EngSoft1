@@ -33,7 +33,7 @@ public class ProfessorManager implements EmprestimoBehavior {
     public String Reservar(Usuario Usuario, Livro Livro) {
         String Msg = Base.Reservar(Usuario, Livro);
 
-        if(Usuario.getListReserva().size() >= 3)
+        if(Usuario.QuantidadeReservas() >= 3)
             Base = FabricaDecorator.NovoReservaMax(Base);
         
         return Msg;

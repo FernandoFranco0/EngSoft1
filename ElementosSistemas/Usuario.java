@@ -134,6 +134,10 @@ public class Usuario {
         ListReserva.add(R);
     }
 
+    public int QuantidadeReservas(){
+        return ListReserva.size();
+    }
+
 
     // --------------------------getters and setters-------------------------
 
