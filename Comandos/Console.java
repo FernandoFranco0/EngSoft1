@@ -20,7 +20,7 @@ public class Console {
     }
 
     public void LerExecutar(){
-        System.out.println("Digite um comando: liv IdLivro, ntf IdProfessor, usu IdUsuario, emp IdUsu IdLiv, dev IdUsu IdLiv, obs IdProf IdLiv, res IdUsu IdLiv, sai");
+        PrintComandos();
         String Input = System.console().readLine();
         String[] Params = ParseInput(Input);
 
@@ -46,6 +46,9 @@ public class Console {
 
     }
 
+    public void PrintComandos(){
+        System.out.println("\nDigite um comando: liv IdLivro, ntf IdProfessor, usu IdUsuario, emp IdUsu IdLiv, dev IdUsu IdLiv, obs IdProf IdLiv, res IdUsu IdLiv, sai");
+    }
 
 
 }
