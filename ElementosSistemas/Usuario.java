@@ -33,7 +33,7 @@ public class Usuario {
     }
 
     public String ComandoUsu(){
-        String Msg = "";
+        String Msg = "Nome do usuario: " + Nome + "\n";
         Msg += "Emprestimos finalizados:\n ";
         for(Emprestimo E : EmprestimosPassados){
             Msg +="Livro: " + E.getExemplarNome() + " pego emprestado em " + E.getDataEmprestimo() + " ate " + E.getDataDevolucao() + "\n";
