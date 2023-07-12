@@ -143,10 +143,6 @@ public class Livro implements Subject{
 		}
     }
 
-    public void GuardarReserva(Reserva R){
-        ListaReservas.add(R);
-    }
-
     // --------------------------getters and setters-------------------------
 
     public int getId() {

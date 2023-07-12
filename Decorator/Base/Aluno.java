@@ -70,7 +70,7 @@ public abstract class Aluno extends AbstractBase {
         Reserva R = FabricaElementosSistema.NovaReserva(Livro, Usuario, Hoje);
 
         Usuario.GuardarReserva(R);
-        Livro.GuardarReserva(R);
+        Livro.Reservar(R);
         BibliotecaFacade.ObterInstancia().GuardarReserva(R);
 
         return "Reserva realizada";   
