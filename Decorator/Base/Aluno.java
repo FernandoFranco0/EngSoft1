@@ -1,7 +1,6 @@
 package Decorator.Base;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import ElementosSistemas.BibliotecaFacade;
 import ElementosSistemas.Emprestimo;
